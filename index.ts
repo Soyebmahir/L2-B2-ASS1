@@ -38,6 +38,9 @@ const getAddressCity = (param: Person): string | undefined => {
 // }
 // console.log(getAddressCity(person1));
 
+
+
+
 // Problem 3:
 
 class Animal {
@@ -46,21 +49,21 @@ class Animal {
         this.name = name;
     }
 }
-class cat extends Animal {
+class Cat extends Animal {
     constructor(name: string) {
         super(name);
     }
 }
-class dog extends Animal {
+class Dog extends Animal {
     constructor(name: string) {
         super(name);
     }
 }
-const isCat = (animal: Animal): animal is cat => {
-    return animal instanceof cat;
+const isCat = (animal: Animal): animal is Cat => {
+    return animal instanceof Cat;
 }
-const isdog = (animal: Animal): animal is dog => {
-    return animal instanceof dog;
+const isdog = (animal: Animal): animal is Dog => {
+    return animal instanceof Dog;
 }
 const getAnimal = (animal: Animal) => {
     if (isCat(animal)) {
@@ -70,7 +73,24 @@ const getAnimal = (animal: Animal) => {
     }
 
 }
-const doggy = new dog('Huski')
-const caty = new cat('Ginger')
-getAnimal(doggy)
-getAnimal(caty)
+const doggy = new Dog('Huski');
+const caty = new Cat('Ginger');
+getAnimal(doggy);
+getAnimal(caty);
+
+// problem 4:
+type numberOrArray = (number | string)[]
+const mixedData: numberOrArray = [1, 'two', 3, 'four', 5]
+const total = mixedData.reduce((acc: number, number: number | string): number => {
+    if (typeof number === 'number') {
+        return acc + number;
+    } else {
+        return acc;
+
+    }
+}, 0)
+
+console.log(total);
+
+
+
