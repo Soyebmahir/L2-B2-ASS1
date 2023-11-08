@@ -75,8 +75,8 @@ const getAnimal = (animal: Animal) => {
 }
 const doggy = new Dog('Huski');
 const caty = new Cat('Ginger');
-getAnimal(doggy);
-getAnimal(caty);
+// getAnimal(doggy);
+// getAnimal(caty);
 
 // problem 4:
 type numberOrArray = (number | string)[]
@@ -90,7 +90,35 @@ const total = mixedData.reduce((acc: number, number: number | string): number =>
     }
 }, 0)
 
-console.log(total);
+// console.log(total);
+
+// problem 5
+interface Car {
+    make: string,
+    model: number,
+    year: number
+}
+interface Driver {
+    name: string,
+    licenseNumber: number
+}
+const car: Car = {
+    make: 'china',
+    model: 2354235,
+    year: 2023
+}
+const driver: Driver = {
+    name: 'Abul',
+    licenseNumber: 23874
+}
+const combineObject = (obj1: Car, obj2: Driver): object => {
+    return {
+        ...obj1, ...obj2
+    }
+
+}
+// console.log(combineObject(car, driver));
 
 
+// problem 6
 
