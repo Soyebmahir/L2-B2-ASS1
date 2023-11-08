@@ -8,7 +8,7 @@ const typeCheck = (param: Value): Value => {
     }
 
 }
-// console.log(typeCheck(12));
+
 
 
 
@@ -26,17 +26,8 @@ const getAddressCity = (param: Person): string | undefined => {
     return param?.address?.city
 
 }
-// const person1: Person = {
-//     name: 'soyeb',
-//     age: 12,
-//     address: {
-//         city: 'Dhaka',
-//         street: 'Sheikhdi'
-//     },
-//     phone: 213515616
 
-// }
-// console.log(getAddressCity(person1));
+
 
 
 
@@ -73,10 +64,7 @@ const getAnimal = (animal: Animal) => {
     }
 
 }
-const doggy = new Dog('Huski');
-const caty = new Cat('Ginger');
-// getAnimal(doggy);
-// getAnimal(caty);
+
 
 // problem 4:
 type numberOrArray = (number | string)[]
@@ -90,7 +78,7 @@ const total = mixedData.reduce((acc: number, number: number | string): number =>
     }
 }, 0)
 
-// console.log(total);
+
 
 // problem 5
 interface Car {
@@ -117,7 +105,7 @@ const combineObject = (obj1: Car, obj2: Driver): object => {
     }
 
 }
-// console.log(combineObject(car, driver));
+
 
 
 // problem 6
@@ -133,8 +121,10 @@ const sumOfArrayOfNumbers = (param: unknown) => {
 }
 
 
-// const arr: unknown[] = [1, 's', 3, 4, 5];
-// sumOfArrayOfNumbers(arr);
+const arr: unknown[] = [1, 2, 3, 4, 5];
+const arr2: unknown[] = [1, 's', 3, 4, 5];
+sumOfArrayOfNumbers(arr);
+sumOfArrayOfNumbers(arr2);
 
 //problem 7
 const findFirstOccurrence = <T>(arr: T[], targetedValue: T) => {
@@ -152,5 +142,22 @@ const indexInNumbers = findFirstOccurrence(numbers, targetNumber);
 const indexInStrings = findFirstOccurrence(strings, targetString);
 console.log(indexInNumbers);
 console.log(indexInStrings);
+
+// problem 8
+interface Product {
+    name: string,
+    price: number,
+    quantity: number
+}
+type Cart = Product[]
+
+const totalCost = (cart: Cart): number => {
+    let total = 0;
+    cart.forEach(product => {
+        total += (product.price * product.quantity)
+    })
+    return total;
+
+}
 
 
