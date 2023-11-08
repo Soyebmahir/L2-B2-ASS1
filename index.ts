@@ -122,3 +122,35 @@ const combineObject = (obj1: Car, obj2: Driver): object => {
 
 // problem 6
 
+const sumOfArrayOfNumbers = (param: unknown) => {
+    if (Array.isArray(param) && param.every((valueOfIndex) => typeof valueOfIndex === 'number')) {
+        const arrayOfNumber = param as number[];
+        const sum = arrayOfNumber.reduce((acc, num) => acc + num, 0);
+        console.log(sum);
+    } else {
+        console.error('Not an array of numbers');
+    }
+}
+
+
+// const arr: unknown[] = [1, 's', 3, 4, 5];
+// sumOfArrayOfNumbers(arr);
+
+//problem 7
+const findFirstOccurrence = <T>(arr: T[], targetedValue: T) => {
+    const indexNumber = arr.indexOf(targetedValue)
+    return indexNumber !== -1 ? indexNumber : -1
+
+}
+const numbers: number[] = [1, 2, 3, 4, 5, 2];
+const strings: string[] = ["apple", "banana", "cherry", "date", "apple"];
+
+const targetNumber = 2;
+const targetString = "nashpati";
+
+const indexInNumbers = findFirstOccurrence(numbers, targetNumber);
+const indexInStrings = findFirstOccurrence(strings, targetString);
+console.log(indexInNumbers);
+console.log(indexInStrings);
+
+
