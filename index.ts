@@ -9,9 +9,6 @@ const typeCheck = (param: Value): Value => {
 
 }
 
-
-
-
 // Problem 2:
 interface Person {
     name: string;
@@ -24,61 +21,33 @@ interface Person {
 }
 const getAddressCity = (param: Person): string | undefined => {
     return param?.address?.city
-
 }
-
-
-
-
-
 
 // Problem 3:
-
-class Animal {
-    name: string;
-    constructor(name: string) {
-        this.name = name;
+class Cat {
+    constructor(public name: string) {
     }
 }
-class Cat extends Animal {
-    constructor(name: string) {
-        super(name);
-    }
-}
-class Dog extends Animal {
-    constructor(name: string) {
-        super(name);
-    }
-}
-const isCat = (animal: Animal): animal is Cat => {
-    return animal instanceof Cat;
-}
-const isdog = (animal: Animal): animal is Dog => {
-    return animal instanceof Dog;
-}
-const getAnimal = (animal: Animal) => {
-    if (isCat(animal)) {
+const isCat = <T extends object>(animal: T): void => {
+    if (animal instanceof Cat) {
         console.log("yes, it's a cat.");
     } else {
         console.log("no, it's not a cat.");
     }
-
 }
 
-
 // problem 4:
-type numberOrArray = (number | string)[]
-const mixedData: numberOrArray = [1, 'two', 3, 'four', 5]
-const total = mixedData.reduce((acc: number, number: number | string): number => {
-    if (typeof number === 'number') {
-        return acc + number;
-    } else {
-        return acc;
+const totalCount = <T>(arr: T[]): number => {
+    let total = arr.reduce((acc: number, current: T): number => {
 
-    }
-}, 0)
+        if (typeof current === 'number') {
+            acc += current as number
+        }
+        return acc
 
-
+    }, 0)
+    return total;
+}
 
 // problem 5
 interface Car {
@@ -99,17 +68,14 @@ const driver: Driver = {
     name: 'Abul',
     licenseNumber: 23874
 }
-const combineObject = (obj1: Car, obj2: Driver): object => {
+const combineObject = (obj1: Car, obj2: Driver): Car & Driver => {
     return {
         ...obj1, ...obj2
     }
 
 }
 
-
-
 // problem 6
-
 const sumOfArrayOfNumbers = (param: unknown) => {
     if (Array.isArray(param) && param.every((valueOfIndex) => typeof valueOfIndex === 'number')) {
         const arrayOfNumber = param as number[];
@@ -120,28 +86,12 @@ const sumOfArrayOfNumbers = (param: unknown) => {
     }
 }
 
-
-const arr: unknown[] = [1, 2, 3, 4, 5];
-const arr2: unknown[] = [1, 's', 3, 4, 5];
-sumOfArrayOfNumbers(arr);
-sumOfArrayOfNumbers(arr2);
-
 //problem 7
 const findFirstOccurrence = <T>(arr: T[], targetedValue: T) => {
     const indexNumber = arr.indexOf(targetedValue)
     return indexNumber !== -1 ? indexNumber : -1
 
 }
-const numbers: number[] = [1, 2, 3, 4, 5, 2];
-const strings: string[] = ["apple", "banana", "cherry", "date", "apple"];
-
-const targetNumber = 2;
-const targetString = "nashpati";
-
-const indexInNumbers = findFirstOccurrence(numbers, targetNumber);
-const indexInStrings = findFirstOccurrence(strings, targetString);
-console.log(indexInNumbers);
-console.log(indexInStrings);
 
 // problem 8
 interface Product {
@@ -150,14 +100,12 @@ interface Product {
     quantity: number
 }
 type Cart = Product[]
-
 const totalCost = (cart: Cart): number => {
     let total = 0;
     cart.forEach(product => {
         total += (product.price * product.quantity)
     })
     return total;
-
 }
 
 
